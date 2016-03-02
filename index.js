@@ -1,6 +1,5 @@
 'use strict';
 
-require( 'es6-shim' );
 const async = require( 'async' );
 const extend = require( 'extend' );
 
