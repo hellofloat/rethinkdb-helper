@@ -1,6 +1,6 @@
 {
   "name": "float-rethinkdb",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Float rethinkdb wrapper.",
   "license": "MIT",
   "contributors": [
@@ -19,8 +19,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "async": "^1.5.1",
+    "async": "^2.0.0-rc.4",
     "extend": "^3.0.0",
-    "rethinkdb": "~2.2.1"
+    "rethinkdb": "~2.3.1"
   }
 }
