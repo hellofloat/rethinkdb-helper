@@ -102,14 +102,34 @@ function _ensureIndexes( options, result, callback ) {
         // iterate over indexes, creating them
         function( next ) {
             async.eachSeries( options.indexes, function( indexSpec, _next ) {
-                result.r.db( options.database ).table( indexSpec.table ).indexList().contains( indexSpec.name ).do( function( indexExists ) {
-                    return result.r.branch(
-                        indexExists, {
-                            created: 0
-                        },
-                        result.r.db( options.database ).table( indexSpec.table ).indexCreate( indexSpec.name, indexSpec.create )
-                    );
-                } ).run( result.connection, _next );
+                result.r
+                    .db( options.database )
+                    .table( indexSpec.table )
+                    .indexList()
+                    .contains( indexSpec.name )
+                    .do( function( indexExists ) {
+                        return result.r.branch(
+                            indexExists, {
+                                created: 0
+                            },
+                            result.r.db( options.database ).table( indexSpec.table ).indexCreate( indexSpec.name, indexSpec.create )
+                        );
+                    } ).run( result.connection, _next );
+            }, next );
+        },
+
+        next => {
+            async.eachSeries( options.indexes, ( indexSpec, _next ) => {
+                if ( indexSpec.wait === false ) {
+                    _next();
+                    return;
+                }
+
+                result.r
+                    .db( options.database )
+                    .table( indexSpec.table )
+                    .indexWait( indexSpec.name )
+                    .run( result.connection, _next );
             }, next );
         }
     ], function( error ) {
