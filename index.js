@@ -3,23 +3,23 @@
 const async = require( 'async' );
 const extend = require( 'extend' );
 
-let Rethink = module.exports = {};
+const Rethink_Helper = module.exports = {};
 
-Rethink.get = function( options, callback ) {
-    var result = {};
+Rethink_Helper.init = function( options, callback ) {
+    const result = {};
     async.series( [
         _verify.bind( null, options, result ),
         _connect.bind( null, options, result ),
         _createDB.bind( null, options, result ),
         _createTables.bind( null, options, result ),
         _ensureIndexes.bind( null, options, result )
-    ], function( error ) {
+    ], error => {
         callback( error, result );
     } );
 };
 
 function _verify( options, result, callback ) {
-    if ( !options.database ) {
+    if ( !( options && options.database ) ) {
         callback( 'You must specify a database.' );
         return;
     }
