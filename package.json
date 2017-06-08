@@ -1,26 +1,46 @@
 {
-  "name": "float-rethinkdb",
-  "version": "0.2.0",
-  "description": "Float rethinkdb wrapper.",
+  "name": "rethinkdb-helper",
+  "version": "0.3.0",
+  "description": "A helper to handle some RethinkDB boilerplate.",
   "license": "MIT",
-  "contributors": [
-    {
-      "name": "Andy Burke",
-      "email": "aburke@bitflood.org",
-      "url": "https://github.com/andyburke"
-    }
-  ],
+  "contributors": [ {
+    "name": "Andy Burke",
+    "email": "aburke@bitflood.org",
+    "url": "https://github.com/andyburke"
+  } ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hellofloat/float-rethinkdb.git"
+    "url": "https://github.com/hellofloat/rethinkdb-helper.git"
   },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "async": "^2.0.0-rc.4",
-    "extend": "^3.0.0",
-    "rethinkdb": "~2.3.1"
+    "async": "^2.4.1",
+    "extend": "^3.0.1",
+    "rethinkdb": "~2.3.3"
+  },
+  "jshintConfig": {
+    "curly": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "esnext": true,
+    "forin": true,
+    "freeze": true,
+    "futurehostile": true,
+    "latedef": "nofunc",
+    "maxcomplexity": 10,
+    "maxdepth": 3,
+    "maxparams": 4,
+    "maxstatements": 30,
+    "noarg": true,
+    "nocomma": true,
+    "node": true,
+    "nonbsp": true,
+    "nonew": true,
+    "strict": "global",
+    "undef": true,
+    "unused": true
   }
 }
